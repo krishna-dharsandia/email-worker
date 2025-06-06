@@ -1,0 +1,21 @@
+name = "email-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+# Environment variables
+# These secrets should be set using:
+# wrangler secret put RESEND_API_KEY
+# wrangler secret put UPSTASH_REDIS_REST_URL  
+# wrangler secret put UPSTASH_REDIS_REST_TOKEN
+
+[vars]
+# Non-secret environment variables can go here
+ENVIRONMENT = "production"
+
+# Cron trigger for automatic email processing (runs every 5 minutes)
+[triggers]
+crons = ["*/5 * * * *"]
+
+[build]
+command = "npm run build"

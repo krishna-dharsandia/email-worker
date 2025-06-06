@@ -1,20 +1,28 @@
 {
   "name": "email-worker",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Email worker with Hono, Resend and Upstash Redis",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "$npm_execpath run build && vite preview",
-    "deploy": "$npm_execpath run build && wrangler deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "dev": "wrangler dev --compatibility-date=2024-01-15",
+    "dev:remote": "wrangler dev --remote",
+    "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run",
+    "test": "vitest"
   },
+  "keywords": ["cloudflare", "workers", "hono", "email", "resend", "redis"],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "hono": "^4.7.11"
+    "hono": "^4.0.0",
+    "resend": "^3.0.0"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.2.3",
-    "vite": "^6.3.5",
-    "vite-ssr-components": "^0.2.0",
-    "wrangler": "^4.17.0"
+    "@cloudflare/workers-types": "^4.20240222.0",
+    "@types/node": "^20.11.17",
+    "esbuild": "^0.20.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1",
+    "wrangler": "^3.28.4"
   }
 }
